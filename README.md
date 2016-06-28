@@ -9,14 +9,13 @@ Xill is not about providing a standard boxed solution for every content related 
 
 ## Who Should Read This Guide
 
-This guide is for anyone who wishes to extend the functionality of Xill from the Java point of view. It will help you get started on your project to develop a plugin for Xill as well as provide some solutions for more advanced problems down the line.
+This guide is for anyone who wishes to extend the functionality of Xill from the Java point of view. It will help you get started with a plugin for Xill as well as provide some solutions for more advanced problems down the line.
 
 This guide is suitable for starting Java developers and Java seniors alike. We expect you to have a programming background. We will not discuss the basics of Java software development. But, yet, it should be possible to understand most of the code examples in this guide for any programmer.
 
 ## Why Did We Write This Guide
 
-After the development of the Xill core stabilized we started building plugins there was no tomorrow. Soon it became clear that this would be something any java developer could do and maybe even like, so we set out to simplify Xill plugin development as much as we reasonably could and decided to document in detail how to build these plugins. To do this we took the initiative to start writing a comprehensive guide that would not only be a simple reference for beginning developers but also provide some reasonable background to the decisions you would have to make when creating your own plugin.
-The reason we choose for this format is because we can publish it to several platforms so anyone could always have a copy of the guide available to them.
+After the development of the Xill core stabilized we started building plugins like there was no tomorrow. We set out to simplify Xill plugin development as much as we could and decided to document in detail how to build these plugins. To do this, we took the initiative to start writing this comprehensive guide. The reason we choose for this format is because we can publish it to different platforms and have it always available.
 
 ## Contributing
 
