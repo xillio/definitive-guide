@@ -39,7 +39,7 @@ You can build a `Boolean` `MetaExpression` from either Java or Xill.
 | Create expression from | Code                                               |
 | ---------------------- | -------------------------------------------------- |
 | Xill                   | `true`                                             |
-| Java                   | `ExpressionBuilderHelper.fromValue(true)`          |
+| Java                   | `ExpressionBuilderHelper.fromValue(true)`        |
 
 It will convert to almost all other types.
 
@@ -90,7 +90,7 @@ It will convert to almost all other types.
 
 ### Data Structures in Xill
 
-The expressions that we looked at before can be arranged in different structures. In Xill we support three basic structures: `ATOMIC`, `LIST` and `OBJECT`.
+We can arrange these expressions in different ways. In Xill we support three basic structures: `ATOMIC`, `LIST` and `OBJECT`.
 
 #### ATOMIC
 The `ATOMIC` structure is the most basic. It represents a single expression. Some examples could be `"Hello World"`, `true` and `null`.

@@ -17,6 +17,31 @@ This guide is suitable for starting Java developers and Java seniors alike. We e
 
 After the development of the Xill core stabilized we started building plugins like there was no tomorrow. We set out to simplify Xill plugin development as much as we could and decided to document in detail how to build these plugins. To do this, we took the initiative to start writing this comprehensive guide. The reason we choose for this format is because we can publish it to different platforms and have it always available.
 
+## Conventions Used in This Guide
+
+The we use following conventions in this guide:
+
+`constant width` text identifies program units. These are method names, classes, parameters, variables and any other elements used in programming.
+
+*Italic* text indicates emphasis, terms or concepts.
+
+> **Best Practice:** This block signifies a convention we would like to pursue
+  
+> **Tip:** This block signifies a tip or suggestion.
+
+> **Note:** This block signifies a more valuable piece of information.
+
+> **Warning:** This block signifies caution.
+
+```java
+/**
+ * Formatted code blocks are used to identify source code.
+ */
+public class Conventions {
+
+}
+```
+
 ## Contributing
 
 We invite and encourage everyone to join the conversation at [xill.io](http://xill.io) and voice their opinions. 
