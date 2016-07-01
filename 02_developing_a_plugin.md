@@ -355,7 +355,33 @@ In Xill IDE you have access to a documentation section. This is where you can fi
 Below you can find a fully expressed example of the documentation model.
 
 ```xml
-<!-- TODO -->
+<?xml version="1.0" encoding="utf-8"?>
+<function>
+    <description>
+Returns true if the value is contained in the given list or object. Otherwise false.
+    </description>
+    <examples>
+        <example title="Usage">
+            <code>
+                use Collection;
+
+                var list = ["a", "b", "c"];
+                Collection.contains(list, "b"); // TRUE
+                Collection.contains(list, "e"); // FALSE
+
+                var object = {1:"a", 2:"b", 3:"c"};
+                Collection.contains(object, "b"); // TRUE
+                Collection.contains(object, "e"); // FALSE
+            </code>
+        </example>
+    </examples>
+    <searchTags>
+        contains, value, filter, list, object
+    </searchTags>
+    <references>
+      <reference>remove</reference>
+    </references>
+</function>
 ```
 
 You can see several components in this xml file so let's walk through them.
