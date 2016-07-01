@@ -32,6 +32,12 @@ If you get a little confused or you want to see an example you can head over to 
 
         <artifactId>plugin-guide</artifactId>
 
+        <repositories>
+          <repository>
+            <id>xillio-release</id>
+            <url>https://maven.xillio.com/artifactory/libs-release</url>
+          </repository>
+        </repositories>
         <dependencies>
             <!-- Here you declare your maven dependencies -->
         </dependencies>
