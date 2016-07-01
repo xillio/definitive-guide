@@ -27,12 +27,16 @@ If you get a little confused or you want to see an example you can head over to 
             <groupId>nl.xillio.xill</groupId>
             <artifactId>xill-plugins-parent</artifactId>
             <!-- Replace this with the latest API version -->
-            <version>3.40.00</version>
+            <version>3.04.00</version>
         </parent>
 
         <artifactId>plugin-guide</artifactId>
 
         <repositories>
+          <repository>
+            <id>jcenter</id>
+            <url>https://jcenter.bintray.com</url>
+          </repository>
           <repository>
             <id>xillio-release</id>
             <url>https://maven.xillio.com/artifactory/libs-release</url>
