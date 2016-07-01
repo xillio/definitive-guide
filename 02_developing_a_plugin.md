@@ -81,19 +81,19 @@ This class is empty for now because we do not have any configuration that we hav
 
 ## The Project Structure
 
-A plugin exists within its own package. In the example above we created the `nl.xillio.xill.plugins.guide` package which is the root for the `GuideXillPlugin`. Later we will be adding *constructs* to this package. If we place them in the `nl.xillio.xill.plugins.guide.**constructs**` package they will be automatically loaded by the package.
+A plugin exists within its own package. In the example above we created the `nl.xillio.xill.plugins.guide` package which is the root for the `GuideXillPlugin`. Later we will be adding *constructs* to this package. If we place them in the `nl.xillio.xill.plugins.guide.**constructs**` package they will be automatically loaded by the abstract `XillPackage` implementation.
 
 This concludes the initial project setup. We are now ready to start adding functionality to the plugin.
 
 ## MetaExpression
 
-Before we create a construct let's take a look at the most important class in the Xill API that you will need to understand. The `MetaExpression` represents all expressions in Xill. It is the main container of data.
+Before we create a construct let's take a look at the most important class in the Xill API. The `MetaExpression` represents all expressions in Xill. It is the main container of data.
 
 ### Expression Types in Xill
 
 We do not want to bother the Xill programmer with typing. This means that the typing system used by Xill might not be entirely intuitive for you if you are more used Java's static type system.
 
-The way we solve the problem is by implementing a conversion for every type in the Xill language to an other type. As a result you can interpret most expressions as the type you want them to be.
+The way we solve this problem is by implementing a conversion for every type in the Xill language to an other type. As a result you can interpret most expressions as the type you want them to be.
 
 For example. Say I have the expression `"300.5"`. Clearly this is a `String`. But, yet if you pass this value to the `Math.round` construct you will notice that it will still work. This is because the MetaExpression allows you to call the `MetaExpression#getNumberValue()` method which formats that string to a Java `Number`.
 
@@ -257,7 +257,7 @@ MetaExpression objectExpression = ExpressionBuilderHelper.fromValue(map);
 ```
 ## Creating Constructs
 
-That should be enough theory now. It's time to get our hands dirty. The first thing we will do is create a simple construct that performs a simple task. Then we will get a little bit more in-depth by doing a little bit more useful operation.
+That should be enough theory for now. It's time to get our hands dirty. The first thing we will do is create a construct that performs a simple task. Then we will get a little bit more in-depth by doing a little bit more useful operation.
 
 ### Hello World
 
@@ -283,7 +283,12 @@ public class GreetConstruct extends Construct {
         Logger logger = constructContext.getRootLogger();
 
         logger.info("Hello " + name.getStringValue() + "!");
-
+        
+        /*
+         Note that here we return NULL and not null.
+         NULL represents a null value in Xill, null 
+         represents a null value in Java.
+        */
         return NULL;
     }
 }
