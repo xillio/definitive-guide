@@ -25,7 +25,7 @@ If you get a little confused or you want to see an example you can head over to 
 
         <parent>
             <groupId>nl.xillio.xill</groupId>
-            <artifactId>plugins-parent</artifactId>
+            <artifactId>xill-plugins-parent</artifactId>
             <!-- Replace this with the latest API version -->
             <version>3.40.00</version>
         </parent>
@@ -38,6 +38,7 @@ If you get a little confused or you want to see an example you can head over to 
             <url>https://maven.xillio.com/artifactory/libs-release</url>
           </repository>
         </repositories>
+        
         <dependencies>
             <!-- Here you declare your maven dependencies -->
         </dependencies>
