@@ -421,3 +421,51 @@ Above the documentation panel there is a search box. To allow for better results
 And finally, if you have constructs that work as a group or that are similar to each other you can reference them here. This will add a link to the documentation page to the referenced construct. You reference a construct by it's name (like System.print). You can leave out the package name if you are referencing a construct in the same package as the documented construct.
 
 ## Using Services
+
+In the `EightBallConstruct` example above we put all the functionality for the construct in a single spot. If we would like to create another construct that fetches a resource using http, we would have to duplicate our code.
+
+A good way to combat code duplication like that is by using services. A service is a class that is responsible for performing a collection of specific operations. Let's take a look a service that performs an http request.
+
+```java
+public class HttpService {
+   private String get(String url) {
+    try (InputStream stream = new URL(url).openStream()) {
+      return IOUtils.toString(stream);
+    } catch(IOException e) {
+      throw new OperationFailedException(
+        "get " + url,
+        e.getMessage(),
+        e
+      );
+    }
+  }
+}
+```
+
+This small service fetches a resource from the internet using an http get request. We can now use this in our constructs. To do this we make use of [Guice](https://github.com/google/guice/wiki).
+
+```java
+public class EightBallConstruct extends Construct {
+  private final HttpService httpService;
+  
+  // Note the @Inject annotation to instruct guice to use this constructor
+  @Inject
+  public EightBallConstruct(HttpService httpService) {
+   this.httpService = httpService;
+  }
+  
+  @Override
+  public ConstructProcessor prepareProcess() {
+    return new ConstructProcessor(
+      this:process
+    );
+  }
+  
+  private MetaExpression process() {
+    String result = httpService.get("https://apis.rtainc.co/twitchbot/8ball");
+    return fromValue(result);
+  }
+}
+```
+
+Using services is a simple as that. Of course there are more advanced scenarios. For these I would like to refer you to the [Guice Wiki](https://github.com/google/guice/wiki).
