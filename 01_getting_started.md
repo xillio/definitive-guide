@@ -1,20 +1,20 @@
 # Getting Started
 
-In this chapter we will take a look at an overview of the Xill platform and what components it consists of. This way we can gain a better understanding of what the responsibility of the plugin is and how we can maximize its potential.
+In this chapter we will give an overview of the Xill platform and what components it consists of. This way we can gain a better understanding of what the responsibility of the plugin is and how we can maximize its potential.
 
 ## Components of Xill
 
 ![The Xill Ecosystem](images/xill_components.png)
 
-At the core of Xill is a modular framework with modules that have clear responsibilities. 
+At the core of Xill is an extensible framework with modules that have clear responsibilities. 
 
 ### Language
 
-The language module defines the Xill syntax converts scripts to token trees. These trees contain all tokens required for processing. This module does no processing other than syntax and sanity checking of the scripts.
+The language module defines the Xill syntax and converts scripts to token trees. These trees contain all tokens required for processing. This module does no processing other than syntax and sanity checking of the scripts.
 
 ### Processor
 
-The processor module is where the magic happens. This module executes scripts. It will take a syntax tree and parse it to a processable object. It manages all resources and handles errors and debugging.
+The processor module is where the magic happens. This module executes scripts. It will take a syntax tree and parse it into an object which can be processed. It manages all resources and handles errors and debugging.
 
 ### API
 
