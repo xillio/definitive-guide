@@ -428,7 +428,7 @@ A good way to combat code duplication like that is by using services. A service 
 
 ```java
 public class HttpService {
-   private String get(String url) {
+   public String get(String url) {
     try (InputStream stream = new URL(url).openStream()) {
       return IOUtils.toString(stream);
     } catch(IOException e) {
