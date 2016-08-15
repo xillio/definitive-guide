@@ -6,13 +6,13 @@ You can do this with any IDE of your choice. As long as it has maven integration
 
 ## Setting up the Project
 
-Let's get our hands dirty and prepare a project for our code. The main supported way of building your plugin is using *Maven*. Please note that the examples below might not use the latest versions of the Xill API.
+Let's get our hands dirty and prepare a project for our code. The main supported way of building your plugin is to use *Maven*. Please note that the examples below might not use the latest versions of the Xill API.
 
 If you get a little confused or you want to see an example you can head over to this guide's [GitHub](https://github.com/xillio/definitive-guide/tree/master/project-example) repository. There you will find a Maven project that supports this guide.
 
 ### Step 1: Setting up the build
 
-1. Make sure you have [Maven 3+](https://maven.apache.org/download.cgi) installed or run an 
+1. Make sure you have [Maven 3+](https://maven.apache.org/download.cgi) installed or you are running an 
    IDE with an embedded maven installation.
 2. Create a `pom.xml` file containing the configuration below.
 
@@ -81,7 +81,7 @@ This class is empty for now because we do not have any configuration that we hav
 
 ## The Project Structure
 
-A plugin exists within its own package. In the example above we created the `nl.xillio.xill.plugins.guide` package which is the root for the `GuideXillPlugin`. Later we will be adding *constructs* to this package. If we place them in the `nl.xillio.xill.plugins.guide.**constructs**` package they will be automatically loaded by the abstract `XillPackage` implementation.
+A plugin exists within its own package. In the example above we created the `nl.xillio.xill.plugins.guide` package which is the root for the `GuideXillPlugin`. Later we will be adding *constructs* to this package. If we place them in the `nl.xillio.xill.plugins.guide.constructs` package they will be automatically loaded by the abstract `XillPackage` implementation.
 
 This concludes the initial project setup. We are now ready to start adding functionality to the plugin.
 
@@ -91,11 +91,11 @@ Before we create a construct let's take a look at the most important class in th
 
 ### Expression Types in Xill
 
-We do not want to bother the Xill programmer with typing. This means that the typing system used by Xill might not be entirely intuitive for you if you are more used Java's static type system.
+We do not want to bother the Xill programmer with variable types. This means that the type system used by Xill might not be entirely intuitive for you if you are more used Java's static type system.
 
-The way we solve this problem is by implementing a conversion for every type in the Xill language to an other type. As a result you can interpret most expressions as the type you want them to be.
+The way we solve this problem is by implementing a conversion for every type in the Xill language to another type. As a result you can interpret most expressions as the type you want them to be.
 
-For example. Say I have the expression `"300.5"`. Clearly this is a `String`. But, yet if you pass this value to the `Math.round` construct you will notice that it will still work. This is because the MetaExpression allows you to call the `MetaExpression#getNumberValue()` method which formats that string to a Java `Number`.
+For example. Say I have the expression `"300.5"`. Clearly this is a `String`. Yet, if you pass this value to the `Math.round` construct you will notice that it will work regardless. This is because the MetaExpression allows you to call the `MetaExpression#getNumberValue()` method which formats that string to a Java `Number`.
 
 Of course conversion is not always possible. If I have the expression `"Hello World"` then when I call `getNumberValue()`, the return value will be `Double.NaN`.
 
@@ -143,7 +143,7 @@ You can build a `Number` `MetaExpression` from either Java or Xill.
 
 | Create expression from | Code                                               |
 | ---------------------- | -------------------------------------------------- |
-| Xill                   | `true`                                             |
+| Xill                   | `5246.3`                                             |
 | Java                   | `ExpressionBuilderHelper.fromValue(5246.3)`        |
 
 It will convert to almost all other types.
@@ -184,7 +184,7 @@ The `ATOMIC` structure is the most basic. It represents a single expression. Som
 
 #### LIST
 
-The `LIST` structure represents a collection of expressions in a fixed order. These expressions can by of any type or structure.
+The `LIST` structure represents a collection of expressions in a fixed order. These expressions can be of any type or structure.
 
 > **Note:** The Xill `LIST` works like `java.util.List` but has a nice syntax wrapped around it.
 
@@ -228,7 +228,7 @@ The `OBJECT` structure is like `LIST` but has `String` indexes.
 
 > **Note:** The Xill `OBJECT` works like `java.util.Map` but attempts to preserve the insertion order. For this reason you have to pass the concrete `LinkedHashMap` instead of a `Map` when building the expression.
 
-To create an `OBJECT` in Xill you use the *brace notation*.
+To create an `OBJECT` in Xill you use the *brace notation* (you might recognize this as JSON).
 
 ```javascript
 // Create an object
@@ -261,7 +261,7 @@ That should be enough theory for now. It's time to get our hands dirty. The firs
 
 ### Hello World
 
-Let's create our `GreetConstruct`. This construct should print **Hello World** you call it.
+Let's create our `GreetConstruct`. This construct should print **Hello World** when you call it.
 
 > **Note:** You should create your constructs in the `constructs` package under the plugin package root. This is where the `XillPlugin` implementation will look for constructs and load them.
 
@@ -295,13 +295,13 @@ public class GreetConstruct extends Construct {
 ```
 
 Let's take a step back and see what's going on here. We created a subclass of `Construct` and placed it in the `constructs` subpackage. Next we have to add the `prepareProcess(ConstructContext)` method.
-This `ConstructProcessor` contains all the information required for executing the construct. We will pass it a process method and the input parameters.
+It returns a  `ConstructProcessor`, which contains all the information required for executing the construct. We will pass it a process method and the input parameters.
 
 In the `process(ConstructContext, MetaExpression)` method you can see how we grab the *logger* and use it to print a message. Something you might notice is how we always return `NULL`. This is because every Xill construct requires an output value.
 
 > **Note:** For the more experienced software developers, you might notice that the `GreetConstruct` class is a `ConstructProcessor` factory.
 
-One interesting piece of the code about that you should take a closer look at, is the constructor of the `Argument` class.
+One interesting piece of the code that you should take a closer look at, is the constructor of the `Argument` class.
 
 ```java
 new Argument("name", fromValue("World"), ATOMIC)
@@ -311,7 +311,7 @@ This is where we define how an argument behaves. First we give it a name by pass
 
 ### Performing an Operation
 
-Now the example above only demonstrates how to create your construct. It does not do anything that would be considered useful, so let's create a construct that is a little bit more advanced. Let's download a resource from the internet and return it to the user. 
+The example above only demonstrates how to create your construct. It does not do anything that would be considered useful, so let's create a construct that is a little bit more advanced. Let's download a resource from the internet and return it to the user. 
 
 The resource we will be downloading is a web api that returns yes, no or maybe with a random distribution. We can find it on [https://apis.rtainc.co/twitchbot/8ball](https://apis.rtainc.co/twitchbot/8ball). Go ahead, try it in your browser. You will find that every time you refresh your browser you will see a random response. This is exactly what we will make our next construct do.
 
@@ -400,11 +400,11 @@ Returns true if the value is contained in the given list or object. Otherwise fa
 </function>
 ```
 
-You can see several components in this xml file so let's walk through them.
+There are several components in this xml file so let's walk through them.
 
 ### Description
 
-In the description section you can write the main body of the documentation. Here you should describe how your construct works and what valid input and output is. You can get into great detail here and use markdown headings and tables to make your documentation more readable.
+In the description section we have the main body of the documentation. Here you should describe how your construct works and what valid input and output is. You can go into great detail here and use markdown headings and tables to make your documentation more readable.
 
 ### Examples
 
@@ -418,7 +418,7 @@ Above the documentation panel there is a search box. To allow for better results
 
 ### References
 
-And finally, if you have constructs that work as a group or that are similar to each other you can reference them here. This will add a link to the documentation page to the referenced construct. You reference a construct by it's name (like System.print). You can leave out the package name if you are referencing a construct in the same package as the documented construct.
+And finally, if you have constructs that work as a group or that are similar to each other you can reference them here. This will add a link to the documentation page to the referenced construct. You reference a construct by its name (like `System.print`). You can leave out the package name if you are referencing a construct in the same package as the documented construct.
 
 ## Using Services
 

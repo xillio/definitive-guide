@@ -22,13 +22,11 @@ The API contains all shared classes. This module provide a shared interface for 
 
 ### Plugins
 
-Now this is what this guide is about. The plugins add actual functionality to Xill. They allow calls to other Java libraries or perform specific operations. These plugins consist of a collection of *constructs* available to the Xill programmer.
-
-A construct in Xill is a function that takes a fixed amount of expressions as input and performs a specific operation. All these constructs can communicate with each other in their own sandbox inside the plugin package. This means the will not affect *constructs* in other plugins.
+Now this is what this guide is about. The plugins add actual functionality to Xill. They allow calls to other Java libraries or perform specific operations. These plugins consist of a collection of *constructs* available to the Xill programmer. The Xill processor module manages these plugins.
 
 > **Note:** For the more experienced Java developers, when we talk about a sandbox what we really mean is that the plugins have their own class loader.
 
-Xill processor module manages these plugins.
+In Xill code you have to start by declaring the plugin packages you are going to use. We have the `use` keyword for that, which may only occur on the first line of a script. Then you can use the plugin by writing `Plugin.Construct()`:
 
 ```javascript
 use System;
@@ -52,4 +50,4 @@ The second part is the actual implementation of the package. This implementation
 
 ### Constructs
 
-Now strictly speaking we do not need *constructs* to form a plugin but without any your plugin will be boring. These *constructs* are implementations of the abstract `Construct` class. They provide a way for the processor module to perform any operation. The package implementation loads them and keeps in the same sandbox as the other constructs in that package.
+Strictly speaking we do not need *constructs* to form a plugin but without any your plugin will be boring. These *constructs* are implementations of the abstract `Construct` class. They provide a way for the processor module to perform any operation. The package implementation loads them and keeps in the same sandbox as the other constructs in that package.
