@@ -11,7 +11,7 @@ Xill is not about providing a standard boxed solution for every content related 
 
 This guide is for anyone who wishes to extend the functionality of Xill from the Java point of view. It will help you get started with a plugin for Xill as well as provide some solutions for more advanced problems down the line.
 
-This guide is suitable for starting Java developers and Java seniors alike. We expect you to have a programming background. We will not discuss the basics of Java software development. But, yet, it should be possible to understand most of the code examples in this guide for any programmer.
+This guide is suitable for starting Java developers and Java seniors alike. We expect you to have a programming background. We will not discuss the basics of Java software development. Yet, it should be possible to understand most of the code examples in this guide for any programmer.
 
 ## Why Did We Write This Guide
 
@@ -19,7 +19,7 @@ After the development of the Xill core stabilized we started building plugins li
 
 ## Conventions Used in This Guide
 
-The we use following conventions in this guide:
+We use the following conventions in this guide:
 
 `constant width` text identifies program units. These are method names, classes, parameters, variables and any other elements used in programming.
 
