@@ -322,7 +322,7 @@ public class EightBallConstruct extends Construct {
   @Override
   public ConstructProcessor prepareProcess() {
     return new ConstructProcessor(
-      this:process
+      this::process
     );
   }
   
